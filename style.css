@@ -1,0 +1,390 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #eee;
+    margin: 0;
+    padding-bottom: 70px;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #282828;
+    padding: 15px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #333;
+    gap: 10px;
+    position: relative; /* Untuk memposisikan header-right */
+}
+
+h1 {
+    margin: 0;
+    color: #ff0000;
+    font-size: 1.8em;
+}
+
+.header-right {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+.header-right button {
+    padding: 8px 12px;
+    background-color: #444;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9em;
+}
+
+.header-right button:hover {
+    background-color: #666;
+}
+
+.main-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    order: 1; /* Pastikan berada di bawah h1 jika layar kecil */
+    width: 100%; /* Memenuhi lebar jika perlu */
+}
+
+@media (min-width: 600px) {
+    .main-controls {
+        order: 0; /* Kembali ke posisi semula di layar yang lebih besar */
+        width: auto;
+    }
+}
+
+input [type="text"] {
+    padding: 8px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #333;
+    color: #eee;
+    width: 250px;
+    flex-grow: 1;
+}
+
+button {
+    padding: 8px 15px;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+button:hover {
+    background-color: #cc0000;
+}
+
+button i {
+    font-size: 1.1em;
+}
+
+.main-controls button {
+    padding: 8px 12px;
+}
+
+input [type="range"] {
+    width: 80px;
+    -webkit-appearance: none;
+    height: 5px;
+    background: #555;
+    border-radius: 5px;
+    outline: none;
+    margin-left: 5px;
+}
+
+input [type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #ff0000;
+    cursor: pointer;
+}
+
+main {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.video-container {
+    background-color: #282828;
+    border: 1px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-controls {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+
+.video-controls button {
+    padding: 5px 8px;
+    font-size: 0.8em;
+    gap: 0;
+}
+
+.video-controls button:hover {
+    background-color: #777;
+}
+
+/* Chat Box */
+#chatBox {
+    background-color: #282828;
+    border-top: 1px solid #333;
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    position: relative;
+    margin-top: auto;
+}
+
+#messages {
+    max-height: 100px;
+    overflow-y: auto;
+    border: 1px solid #333;
+    padding: 10px;
+    margin-bottom: 0;
+    background-color: #1a1a1a;
+    border-radius: 4px;
+    flex-grow: 1;
+}
+
+#messages p {
+    margin: 3px 0;
+    word-wrap: break-word;
+}
+
+#chatInput {
+    flex-grow: 1;
+    margin-right: 0;
+}
+
+/* --- Gaya untuk Modal Pengaturan & Kontak --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #282828;
+    margin: auto;
+    padding: 25px;
+    border: 1px solid #555;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.modal-content h2 {
+    color: #ff0000;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 10px;
+}
+
+.modal-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.modal-content li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-content li i {
+    font-size: 1.2em;
+    color: #bbb;
+}
+
+.modal-content a {
+    color: #eee;
+    text-decoration: none;
+}
+
+.modal-content a:hover {
+    text-decoration: underline;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #fff;
+    text-decoration: none;
+}
+
+.setting-section {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #3a3a3a;
+}
+
+.setting-section:last-child {
+    border-bottom: none;
+}
+
+.setting-section h3 {
+    color: #eee;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.setting-section label {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 8px;
+}
+
+.setting-section input [type="checkbox"] {
+    margin-right: 5px;
+    transform: scale(1.2);
+}
+
+.setting-section select {
+    padding: 8px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #333;
+    color: #eee;
+    width: 150px;
+}
+
+.description {
+    font-size: 0.9em;
+    color: #bbb;
+    margin-top: 5px;
+    line-height: 1.4;
+}
+
+.danger-button {
+    background-color: #dc3545;
+}
+
+.danger-button:hover {
+    background-color: #c82333;
+}
+
+/* --- Gaya untuk Footer Navigasi --- */
+.bottom-navigation {
+    background-color: #282828;
+    border-top: 1px solid #333;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-around;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 999;
+}
+
+.nav-button {
+    background-color: transparent;
+    color: #aaa;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 0.9em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    transition: color 0.2s ease;
+    position: relative; /* Untuk posisi badge histori */
+}
+
+.nav-button:hover,
+.nav-button.active {
+    color: #ff0000;
+}
+
+.nav-button i {
+    font-size: 1.5em;
+    margin-bottom: 3px;
+}
+
+#historyCount {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #ff0000;
+    color: white;
+    font-size: 0.7em;
+    padding: 2px 5px;
+    border-radius: 50%;
+}
+
+label [for="masterVolume"] {
+    display: none;
+}

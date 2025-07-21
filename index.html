@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MutiTube </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<marquee> 📢   Selamat Datang Di Website Pemutar Youtube Multiplayer By Nasikin Official</marquee>
+<body>
+    
+    <header>
+        
+        <h1>MutiTube</h1>
+        <div class="header-right">
+            <button id="contactButton"><i class="fas fa-envelope"></i> Kontak</button>
+        </div>
+        <div class="main-controls">
+            <input type="text" id="videoUrlInput" placeholder="Tempel URL YouTube di sini...">
+            <button id="addVideoButton">Tambah Video</button>
+            <button id="playAllButton" title="Putar Semua Video"><i class="fas fa-play"></i></button>
+            <button id="pauseAllButton" title="Jeda Semua Video"><i class="fas fa-pause"></i></button>
+            <input type="range" id="masterVolume" min="0" max="1" step="0.01" value="0.5" title="Volume Utama">
+        </div>
+    </header>
+
+    <main id="videoGrid">
+        </main>
+
+    <div id="chatBox">
+        <div id="messages"></div>
+        <input type="text" id="chatInput" placeholder="Ketik pesan...">
+        <button id="sendMessage">Kirim</button>
+    </div>
+
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">×</span>
+            <h2>Pengaturan MutiTube</h2>
+
+            <div class="setting-section">
+                <h3>Pengaturan Umum</h3>
+                <label for="autoPlayNewVideos">Putar Otomatis Video Baru:</label>
+                <input type="checkbox" id="autoPlayNewVideos" checked>
+            </div>
+
+            <div class="setting-section">
+                <h3>Kualitas & Tata Letak Video</h3>
+                <label for="videoQuality">Kualitas Video Default:</label>
+                <select id="videoQuality">
+                    <option value="auto">Otomatis</option>
+                    <option value="highres">Kualitas Tertinggi</option>
+                    <option value="hd1080">HD 1080p</option>
+                    <option value="hd720">HD 720p</option>
+                    <option value="large">480p</option>
+                    <option value="medium">360p</option>
+                    <option value="small">240p</option>
+                </select>
+                <p class="description">Ini akan mempengaruhi kualitas pemutaran semua video baru yang ditambahkan. Kualitas tinggi mungkin memakan lebih banyak bandwidth.</p>
+            </div>
+
+            <div class="setting-section">
+                <h3>Manajemen Video</h3>
+                <button id="clearAllVideos" class="danger-button">Hapus Semua Video</button>
+                <p class="description">Hati-hati! Ini akan menghapus semua video dari grid.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">×</span>
+            <h2>Kontak Developer</h2>
+            <p>Untuk menghubungi developer, silakan melalui:</p>
+            <ul>
+                <li><i class="fab fa-youtube"></i> <a href="https://youtube.com/@nasikinofficial?si=BRCXUPwWwhVXxpPi" target="_blank" rel="noopener noreferrer">Nasikin Official</a> (👈 Klik)</li>
+                <li><i class="fas fa-envelope"></i> <a href="mailto:ytnasikin280@gmail.com">ytnasikin280@gmail.com</a> (👈Klik)</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer class="bottom-navigation">
+        <button id="homeButton" class="nav-button active"><i class="fas fa-home"></i> Beranda</button>
+        <button id="exploreButton" class="nav-button"><i class="fas fa-compass"></i> Jelajah <span id="historyCount">(0)</span></button>
+        <button id="settingsButton" class="nav-button"><i class="fas fa-cog"></i> Pengaturan</button>
+    </footer>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="script.js"></script>
+</body>
+</html>
